@@ -1,0 +1,6 @@
+
+<app-mat-custom-gird *ngIf="isDataLoaded"
+ (action)="onTableAction($event)"
+  [dataset]="customers" 
+  [columns]="columns">
+</app-mat-custom-gird>
