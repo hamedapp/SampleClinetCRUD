@@ -13,19 +13,15 @@ import { CustomerService } from 'src/app/services/api/customer.service';
 export class CustomersListComponent implements OnInit, OnDestroy {
 
   customers: Customer[] = [];
-
   columns = [
     { columnDef: 'firstName', header: 'Fisrt Name' },
     { columnDef: 'lastName', header: 'Last Name' },
-    { columnDef: 'city', header: 'City' },
-    { columnDef: 'mobile', header: 'Phone Number' },
-    { columnDef: 'email', header: 'Email' },
+    // { columnDef: 'city', header: 'City' },
+    // { columnDef: 'mobile', header: 'Phone Number' },
+    // { columnDef: 'email', header: 'Email' },
   ]
-
-  currentTutorial: Customer = {};
-
+  currentCustomer: Customer = {};
   customerServiceSub: Subscription = new Subscription;
-
   isDataLoaded: boolean = false;
 
   private router: Router;
@@ -33,7 +29,7 @@ export class CustomersListComponent implements OnInit, OnDestroy {
   constructor(private customerService: CustomerService, router: Router) {
     this.router = router;
   }
- 
+
   ngOnDestroy(): void {
     this.customerServiceSub.unsubscribe;
   }
@@ -61,8 +57,17 @@ export class CustomersListComponent implements OnInit, OnDestroy {
     this.customerServiceSub = this.customerService.delete(id)
       .subscribe({
         next: (res) => {
-          console.log(res);
           this.refreshList();
+        },
+        error: (e) => console.error(e)
+      });
+  }
+
+  getCustomer(id: number): void {
+    this.customerServiceSub = this.customerService.get(id)
+      .subscribe({
+        next: (res) => {
+          this.currentCustomer = res;
         },
         error: (e) => console.error(e)
       });
@@ -73,13 +78,15 @@ export class CustomersListComponent implements OnInit, OnDestroy {
   }
 
   onTableAction(event: TableButtonAction) {
-
     if (event.name == "delete") {
       this.remove(event.value.id);
       this.refreshList();
     }
     if (event.name == "edit") {
       this.update(event.value.id);
+    }
+    if (event.name == "view") {
+      this.getCustomer(event.value.id);
     }
   }
 }

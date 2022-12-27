@@ -1,6 +1,14 @@
+<div class="container row">
+  <div class="col-4">
+    <app-detail-customer [customer]="currentCustomer" [closeNav]="true">
 
-<app-mat-custom-gird *ngIf="isDataLoaded"
- (action)="onTableAction($event)"
-  [dataset]="customers" 
-  [columns]="columns">
-</app-mat-custom-gird>
+    </app-detail-customer>
+  </div>
+  <div class="col-8">
+    <app-mat-custom-gird *ngIf="isDataLoaded" (action)="onTableAction($event)" [dataset]="customers"
+      [columns]="columns">
+    </app-mat-custom-gird>
+
+  </div>
+  
+</div>

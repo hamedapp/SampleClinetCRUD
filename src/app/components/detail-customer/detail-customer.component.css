@@ -1,0 +1,9 @@
+ .app-drawer-container {
+    width: auto;
+    height: 400px;
+    background-color: white;
+}
+
+.app-content {
+   background-color: #fafafa;
+}

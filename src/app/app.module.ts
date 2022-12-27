@@ -13,14 +13,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { ActionButtonsComponent } from './components/custom-grid/action-button/action-buttons.component';
 import { CustomGridComponent } from './components/custom-grid/custom-grid.component';
+import { DetailCustomerComponent } from './components/detail-customer/detail-customer.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     AddCustomerComponent,
+    DetailCustomerComponent,
     CustomersListComponent,
-    CustomGridComponent, ActionButtonsComponent
+    CustomGridComponent,
+    ActionButtonsComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,6 @@ import { CustomGridComponent } from './components/custom-grid/custom-grid.compon
     MaterialModule,
     BrowserAnimationsModule,
     CommonModule,
-
   ],
   providers: [],
   bootstrap: [AppComponent]

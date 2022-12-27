@@ -41,7 +41,6 @@ export class CustomGridComponent implements OnInit, OnChanges {
 
     // add action column
     this.displayedColumns.push("action");
-    
 
     // set pagination
     this.dataSource.paginator = this.paginator ?? null;
@@ -57,7 +56,6 @@ export class CustomGridComponent implements OnInit, OnChanges {
   }
 
   onTableAction(e: any, customer: Customer): void {
-    console.log(e)
     let outPut: TableButtonAction = { name: (<TableButtonAction>e).name, value: customer};
     this.action.emit(outPut)
   }
